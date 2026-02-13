@@ -1,0 +1,1772 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transformasi Ketentuan Pidana UU ITE dalam KUHP Baru</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0e17;
+            --bg-secondary: #111827;
+            --bg-card: #1a2332;
+            --bg-card-hover: #1f2b3d;
+            --accent-cyan: #00e5ff;
+            --accent-blue: #3b82f6;
+            --accent-purple: #a855f7;
+            --accent-green: #22c55e;
+            --accent-red: #ef4444;
+            --accent-orange: #f97316;
+            --accent-yellow: #eab308;
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border-color: #1e293b;
+            --glow-cyan: 0 0 20px rgba(0, 229, 255, 0.15);
+            --glow-blue: 0 0 20px rgba(59, 130, 246, 0.15);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            min-height: 100dvh;
+            overflow: hidden;
+            -webkit-tap-highlight-color: rgba(0, 229, 255, 0.15);
+        }
+
+        /* ── Layout ── */
+        .app {
+            display: flex;
+            height: 100vh;
+            height: 100dvh;
+        }
+
+        /* ── Sidebar ── */
+        .sidebar {
+            width: 300px;
+            background: var(--bg-secondary);
+            border-right: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .sidebar-header {
+            padding: 24px 20px;
+            border-bottom: 1px solid var(--border-color);
+            background: linear-gradient(180deg, rgba(0, 229, 255, 0.05) 0%, transparent 100%);
+        }
+
+        .sidebar-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--bg-primary);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .logo-text {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.3;
+        }
+
+        .logo-text span {
+            display: block;
+            font-size: 10px;
+            font-weight: 400;
+            color: var(--accent-cyan);
+            font-family: 'JetBrains Mono', monospace;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .sidebar-nav {
+            flex: 1;
+            overflow-y: auto;
+            padding: 12px 10px;
+        }
+
+        .sidebar-nav::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .sidebar-nav::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .sidebar-nav::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+
+        button.nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 14px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.25s;
+            margin-bottom: 4px;
+            border: 1px solid transparent;
+            position: relative;
+            touch-action: manipulation;
+            -webkit-user-select: none;
+            user-select: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+            font-family: 'Inter', sans-serif;
+            font-size: inherit;
+            color: inherit;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .nav-item:hover {
+            background: rgba(0, 229, 255, 0.05);
+            border-color: rgba(0, 229, 255, 0.1);
+        }
+
+        .nav-item.active {
+            background: rgba(0, 229, 255, 0.08);
+            border-color: rgba(0, 229, 255, 0.25);
+        }
+
+        .nav-item.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3px;
+            height: 60%;
+            background: var(--accent-cyan);
+            border-radius: 0 3px 3px 0;
+        }
+
+        .nav-num {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 600;
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--bg-card);
+            color: var(--text-muted);
+            flex-shrink: 0;
+            transition: all 0.25s;
+        }
+
+        .nav-item.active .nav-num {
+            background: var(--accent-cyan);
+            color: var(--bg-primary);
+        }
+
+        .nav-label {
+            font-size: 12.5px;
+            color: var(--text-secondary);
+            line-height: 1.4;
+            transition: color 0.25s;
+        }
+
+        .nav-item.active .nav-label {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .sidebar-footer {
+            padding: 16px 20px;
+            border-top: 1px solid var(--border-color);
+            font-size: 10px;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+            text-align: center;
+        }
+
+        /* ── Main Content ── */
+        .main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Topbar */
+        .topbar {
+            height: 56px;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .topbar-title {
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .topbar-title strong {
+            color: var(--accent-cyan);
+        }
+
+        .page-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .page-indicator .current {
+            color: var(--accent-cyan);
+            font-weight: 600;
+        }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 8px 10px;
+            cursor: pointer;
+            color: var(--text-primary);
+            font-size: 18px;
+            touch-action: manipulation;
+            -webkit-appearance: none;
+            min-height: 44px;
+            min-width: 44px;
+        }
+
+        .page-select {
+            display: none;
+            background: var(--bg-card);
+            color: var(--accent-cyan);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 600;
+            min-height: 44px;
+            touch-action: manipulation;
+            cursor: pointer;
+        }
+
+        /* Content Area */
+        .content-area {
+            flex: 1;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .page {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior: contain;
+            padding: 40px;
+            opacity: 0;
+            transform: translateX(30px);
+            pointer-events: none;
+            transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .page.active {
+            opacity: 1;
+            transform: translateX(0);
+            pointer-events: all;
+        }
+
+        .page.exit-left {
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+
+        .page::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .page::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .page::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 6px;
+        }
+
+        .page-inner {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        /* ── Bottom Nav ── */
+        .bottom-nav {
+            height: 64px;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .btn-nav {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-card);
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 13px;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.25s;
+            touch-action: manipulation;
+            -webkit-appearance: none;
+            min-height: 44px;
+        }
+
+        .btn-nav:hover {
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+            background: rgba(0, 229, 255, 0.05);
+        }
+
+        .btn-nav:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .btn-nav:disabled:hover {
+            border-color: var(--border-color);
+            color: var(--text-secondary);
+            background: var(--bg-card);
+        }
+
+        .dot-indicators {
+            display: flex;
+            gap: 6px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--border-color);
+            cursor: pointer;
+            transition: all 0.25s;
+            touch-action: manipulation;
+            border: none;
+            padding: 0;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .dot.active {
+            background: var(--accent-cyan);
+            box-shadow: 0 0 8px rgba(0, 229, 255, 0.4);
+        }
+
+        .dot:hover {
+            background: var(--accent-blue);
+        }
+
+        /* ══════════════════════════════════
+           CONTENT STYLES
+           ══════════════════════════════════ */
+
+        /* Page Header */
+        .page-header {
+            margin-bottom: 36px;
+        }
+
+        .page-header .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+
+        .tag.cyan { background: rgba(0, 229, 255, 0.1); color: var(--accent-cyan); border: 1px solid rgba(0, 229, 255, 0.2); }
+        .tag.red { background: rgba(239, 68, 68, 0.1); color: var(--accent-red); border: 1px solid rgba(239, 68, 68, 0.2); }
+        .tag.green { background: rgba(34, 197, 94, 0.1); color: var(--accent-green); border: 1px solid rgba(34, 197, 94, 0.2); }
+        .tag.orange { background: rgba(249, 115, 22, 0.1); color: var(--accent-orange); border: 1px solid rgba(249, 115, 22, 0.2); }
+        .tag.purple { background: rgba(168, 85, 247, 0.1); color: var(--accent-purple); border: 1px solid rgba(168, 85, 247, 0.2); }
+        .tag.yellow { background: rgba(234, 179, 8, 0.1); color: var(--accent-yellow); border: 1px solid rgba(234, 179, 8, 0.2); }
+
+        .page-header h2 {
+            font-size: 1.7em;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* Card Grid */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 24px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--accent-blue);
+        }
+
+        .card:hover {
+            border-color: rgba(0, 229, 255, 0.2);
+            transform: translateY(-4px);
+            box-shadow: var(--glow-cyan);
+        }
+
+        .card.red::before { background: var(--accent-red); }
+        .card.green::before { background: var(--accent-green); }
+        .card.orange::before { background: var(--accent-orange); }
+        .card.purple::before { background: var(--accent-purple); }
+
+        .card .label {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .card.red .label { background: rgba(239, 68, 68, 0.12); color: var(--accent-red); }
+        .card.green .label { background: rgba(34, 197, 94, 0.12); color: var(--accent-green); }
+
+        .card h4 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .card p {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Badge */
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 5px;
+            font-size: 10px;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+            vertical-align: middle;
+            margin-left: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .badge.changed { background: rgba(239, 68, 68, 0.15); color: var(--accent-red); }
+        .badge.new { background: rgba(34, 197, 94, 0.15); color: var(--accent-green); }
+
+        /* Comparison */
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 50px 1fr;
+            gap: 0;
+            align-items: stretch;
+            margin-bottom: 30px;
+        }
+
+        .comp-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 26px;
+        }
+
+        .comp-box.old {
+            border-top: 3px solid var(--accent-orange);
+        }
+
+        .comp-box.new {
+            border-top: 3px solid var(--accent-cyan);
+        }
+
+        .comp-box h4 {
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .comp-box.old h4 { color: var(--accent-orange); }
+        .comp-box.new h4 { color: var(--accent-cyan); }
+
+        .comp-box .quote {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            padding: 18px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 10px;
+            border-left: 3px solid var(--border-color);
+        }
+
+        .comp-box.old .quote { border-left-color: var(--accent-orange); }
+        .comp-box.new .quote { border-left-color: var(--accent-cyan); }
+
+        .comp-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: var(--accent-cyan);
+        }
+
+        /* Styled Table */
+        .styled-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .styled-table thead {
+            background: var(--bg-card);
+        }
+
+        .styled-table th {
+            padding: 14px 20px;
+            text-align: left;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--accent-cyan);
+            font-family: 'JetBrains Mono', monospace;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .styled-table td {
+            padding: 14px 20px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .styled-table tbody tr {
+            transition: background 0.2s;
+        }
+
+        .styled-table tbody tr:hover {
+            background: rgba(0, 229, 255, 0.03);
+        }
+
+        .styled-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-left: 3px solid var(--accent-blue);
+            border-radius: 0 12px 12px 0;
+            padding: 20px 24px;
+            margin: 20px 0;
+            font-size: 13px;
+        }
+
+        .info-box.yellow { border-left-color: var(--accent-yellow); }
+        .info-box.red { border-left-color: var(--accent-red); }
+        .info-box.cyan { border-left-color: var(--accent-cyan); }
+
+        .info-box h5 {
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-family: 'JetBrains Mono', monospace;
+            letter-spacing: 0.5px;
+        }
+
+        .info-box.yellow h5 { color: var(--accent-yellow); }
+        .info-box.red h5 { color: var(--accent-red); }
+        .info-box.cyan h5 { color: var(--accent-cyan); }
+        .info-box h5 { color: var(--accent-blue); }
+
+        .info-box p, .info-box li {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .info-box ul {
+            margin-left: 20px;
+            margin-top: 8px;
+        }
+
+        /* Article Content */
+        .article-block {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 28px;
+            margin-bottom: 20px;
+        }
+
+        .article-block h4 {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 18px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .ayat {
+            margin: 14px 0;
+            padding: 16px 20px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 10px;
+            border-left: 3px solid var(--accent-blue);
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .ayat-num {
+            font-weight: 700;
+            color: var(--accent-cyan);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .ayat ul {
+            margin-left: 24px;
+            margin-top: 10px;
+        }
+
+        .ayat li {
+            margin-bottom: 6px;
+        }
+
+        .highlight {
+            background: rgba(0, 229, 255, 0.1);
+            padding: 1px 5px;
+            border-radius: 4px;
+            color: var(--accent-cyan);
+        }
+
+        /* Transition Box */
+        .transition-block {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 28px;
+            margin-bottom: 20px;
+        }
+
+        .transition-block h4 {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+
+        .transition-block .pasal {
+            background: rgba(0,0,0,0.2);
+            padding: 18px 22px;
+            border-radius: 10px;
+            border-left: 3px solid var(--accent-purple);
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Hero (Page 0) */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 70vh;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            background: rgba(0, 229, 255, 0.08);
+            color: var(--accent-cyan);
+            border: 1px solid rgba(0, 229, 255, 0.2);
+            margin-bottom: 28px;
+        }
+
+        .hero-badge .pulse {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-cyan);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0, 229, 255, 0.4); }
+            50% { opacity: 0.7; box-shadow: 0 0 0 8px rgba(0, 229, 255, 0); }
+        }
+
+        .hero h1 {
+            font-size: 2.6em;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff 0%, var(--accent-cyan) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .subtitle {
+            font-size: 15px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            line-height: 1.7;
+            margin-bottom: 36px;
+        }
+
+        .hero .org {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 18px 30px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .hero .org strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .hero .btn-start {
+            margin-top: 30px;
+            padding: 14px 32px;
+            border-radius: 12px;
+            border: none;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            color: var(--bg-primary);
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Inter', sans-serif;
+            touch-action: manipulation;
+            -webkit-appearance: none;
+            min-height: 44px;
+        }
+
+        .hero .btn-start:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 229, 255, 0.25);
+        }
+
+        /* Grid pattern background */
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(rgba(0, 229, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 229, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .app { position: relative; z-index: 1; }
+
+        /* ── Responsive ── */
+        @media (max-width: 900px) {
+            .app {
+                display: block;
+            }
+
+            .main {
+                display: block;
+                width: 100%;
+            }
+
+            .topbar {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 50;
+            }
+
+            .content-area {
+                position: fixed;
+                top: 56px;
+                left: 0;
+                right: 0;
+                bottom: 64px;
+                overflow: hidden;
+            }
+
+            .bottom-nav {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                z-index: 50;
+                padding: 0 16px;
+            }
+
+            .sidebar {
+                position: fixed;
+                left: -320px;
+                top: 0;
+                bottom: 0;
+                z-index: 100;
+                transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow: none;
+            }
+
+            .sidebar.open {
+                left: 0;
+                box-shadow: 20px 0 60px rgba(0,0,0,0.5);
+            }
+
+            .overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0,0,0,0.5);
+                z-index: 99;
+            }
+
+            .overlay.show {
+                display: block;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .page-select {
+                display: block;
+            }
+
+            .page-indicator {
+                display: none;
+            }
+
+            .page {
+                padding: 24px 18px;
+            }
+
+            .hero h1 {
+                font-size: 1.8em;
+            }
+
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+
+            .comp-arrow {
+                transform: rotate(90deg);
+                padding: 10px 0;
+            }
+
+            .dot-indicators {
+                display: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+    <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+    <div class="app">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="sidebar-logo">
+                    <div class="logo-icon">ITE</div>
+                    <div class="logo-text">
+                        Panduan Hukum Siber
+                        <span>// Referensi Digital</span>
+                    </div>
+                </div>
+            </div>
+            <nav class="sidebar-nav" id="sidebarNav"></nav>
+            <div class="sidebar-footer">
+                SUBDTI V SIBER &mdash; POLDA JAMBI
+            </div>
+        </aside>
+
+        <!-- Main -->
+        <main class="main">
+            <!-- Topbar -->
+            <div class="topbar">
+                <button class="hamburger" onclick="toggleSidebar()">&#9776;</button>
+                <div class="topbar-title" id="topbarTitle">
+                    <strong>&gt;_</strong> Transformasi UU ITE
+                </div>
+                <select class="page-select" id="pageSelect" onchange="goToPage(Number(this.value))">
+                    <option value="0">00 - Beranda</option>
+                    <option value="1">01 - Ketentuan Dicabut</option>
+                    <option value="2">02 - Ketentuan Berlaku</option>
+                    <option value="3">03 - Pemetaan Transformasi</option>
+                    <option value="4">04 - Kesusilaan Digital</option>
+                    <option value="5">05 - Perjudian Digital</option>
+                    <option value="6">06 - Defamasi Digital</option>
+                    <option value="7">07 - Provokasi SARA</option>
+                    <option value="8">08 - Hoaks</option>
+                    <option value="9">09 - Akses Ilegal</option>
+                    <option value="10">10 - Intersepsi</option>
+                    <option value="11">11 - Transisi Hukum</option>
+                    <option value="12">12 - Ketentuan Tambahan</option>
+                </select>
+                <div class="page-indicator">
+                    <span class="current" id="pageNum">01</span>
+                    <span>/</span>
+                    <span id="totalPages">12</span>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="content-area">
+
+                <!-- PAGE 0: Landing -->
+                <div class="page active" data-page="0">
+                    <div class="page-inner">
+                        <div class="hero">
+                            <div class="hero-badge"><div class="pulse"></div> UU No. 1/2023 &bull; UU No. 1/2026</div>
+                            <h1>Transformasi Ketentuan Pidana UU ITE dalam KUHP Baru</h1>
+                            <p class="subtitle">Panduan komprehensif mengenai perubahan regulasi siber Indonesia berdasarkan KUHP Baru dan Penyesuaian UU No. 1/2026</p>
+                            <div class="org">
+                                <strong>SUBDTI V SIBER DITRESKRIMSUS POLDA JAMBI</strong>
+                                Disusun untuk keperluan Edukasi dan Panduan Penyelidikan Tindak Pidana ITE
+                            </div>
+                            <button class="btn-start" onclick="goToPage(1)">Mulai Membaca &rarr;</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PAGE 1: Ketentuan Dicabut -->
+                <div class="page" data-page="1">
+                    <div class="page-inner">
+                        <div class="page-header">
+                            <div class="tag red">Dicabut</div>
+                            <h2>Ketentuan UU ITE yang Telah Dicabut</h2>
+                            <p>Mengacu pada Ketentuan Peralihan dalam UU No. 1/2024 tentang Perubahan Kedua UU ITE</p>
+                        </div>
+
+                        <div class="card-grid">
+                            <div class="card red">
+                                <div class="label">Pasal 27 ayat (1)</div>
+                                <h4>Konten Asusila</h4>
+                                <p>Larangan menyebarkan, menampilkan, atau menyediakan akses terhadap materi elektronik bermuatan asusila yang ditujukan untuk konsumsi publik &mdash; kini diatur dalam KUHP.</p>
+                            </div>
+                            <div class="card red">
+                                <div class="label">Pasal 27A</div>
+                                <h4>Pencemaran nama baik / Menyerang Kehormatan</h4>
+                                <p>Larangan melakukan tuduhan melalui platform digital dengan tujuan merusak kehormatan seseorang &mdash; kini tunduk pada aturan KUHP tentang pencemaran nama baik.</p>
+                            </div>
+                            <div class="card red">
+                                <div class="label">Pasal 28 ayat (2)</div>
+                                <h4>Provokasi Berbasis Identitas</h4>
+                                <p>Larangan menyebarkan konten yang memicu kebencian antar kelompok berdasarkan identitas primordial &mdash; kini diatur melalui ketentuan KUHP tentang hasutan.</p>
+                            </div>
+                            <div class="card red">
+                                <div class="label">Pasal 28 ayat (3)</div>
+                                <h4>Hoaks Pemicu Kekacauan</h4>
+                                <p>Larangan menyebarkan informasi palsu yang mengakibatkan gangguan ketertiban umum &mdash; kini tercakup dalam pasal KUHP tentang berita bohong.</p>
+                            </div>
+                            <div class="card red">
+                                <div class="label">Pasal 36</div>
+                                <h4>Faktor Pemberat Kerugian</h4>
+                                <p>Ketentuan pemberatan sanksi berdasarkan besaran kerugian material yang ditimbulkan &mdash; tidak lagi berlaku secara mandiri.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PAGE 2: Ketentuan Berlaku -->
+                <div class="page" data-page="2">
+                    <div class="page-inner">
+                        <div class="page-header">
+                            <div class="tag green">Masih Berlaku</div>
+                            <h2>Ketentuan UU ITE yang Tetap Berkekuatan Hukum</h2>
+                            <p>Pasal-pasal yang tetap memiliki kekuatan hukum mengikat pasca berlakunya KUHP Baru</p>
+                        </div>
+
+                        <div class="card-grid">
+                            <div class="card green">
+                                <div class="label">Pasal 27 ayat (2)</div>
+                                <h4>Konten Perjudian <span class="badge changed">DICABUT 2026</span></h4>
+                                <p>Larangan menyediakan akses terhadap materi perjudian digital &mdash; telah dihapus melalui UU Penyesuaian Pidana 2026.</p>
+                            </div>
+                            <div class="card green">
+                                <div class="label">Pasal 27B</div>
+                                <h4>Pemerasan Digital</h4>
+                                <p>Larangan melakukan intimidasi atau ancaman pembocoran informasi rahasia dengan motif keuntungan finansial melalui media elektronik.</p>
+                            </div>
+                            <div class="card green">
+                                <div class="label">Pasal 28 ayat (1)</div>
+                                <h4>Penipuan Konsumen Digital</h4>
+                                <p>Larangan menyebarkan informasi menyesatkan yang merugikan konsumen dalam aktivitas perdagangan elektronik.</p>
+                            </div>
+                            <div class="card green">
+                                <div class="label">Pasal 29</div>
+                                <h4>Intimidasi Personal / bullying</h4>
+                                <p>Larangan mengirimkan pesan elektronik berisi ancaman kekerasan atau teror yang ditargetkan kepada individu tertentu.</p>
+                            </div>
+                            <div class="card green">
+                                <div class="label">Pasal 32</div>
+                                <h4>Gangguan Integritas Data</h4>
+                                <p>Larangan merusak, mengubah, atau menghilangkan data elektronik milik pihak lain secara tidak sah.</p>
+                            </div>
+                            <div class="card green">
+                                <div class="label">Pasal 33</div>
+                                <h4>Sabotase Sistem</h4>
+                                <p>Larangan melakukan tindakan yang mengakibatkan terganggunya operasional sistem elektronik.</p>
+                            </div>
+                            <div class="card green">
+                                <div class="label">Pasal 34</div>
+                                <h4>Distribusi Alat Peretas</h4>
+                                <p>Larangan memproduksi atau mendistribusikan perangkat yang dirancang untuk memfasilitasi kejahatan siber.</p>
+                            </div>
+                            <div class="card green">
+                                <div class="label">Pasal 35</div>
+                                <h4>Pemalsuan Data Digital</h4>
+                                <p>Larangan memanipulasi informasi elektronik sehingga seolah-olah merupakan data yang autentik.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PAGE 3: Pemetaan Transformasi -->
+                <div class="page" data-page="3">
+                    <div class="page-inner">
+                        <div class="page-header">
+                            <div class="tag orange">Pemetaan</div>
+                            <h2>Pemetaan Transformasi Ketentuan UU ITE ke KUHP Baru</h2>
+                            <p>Berdasarkan amanat Pasal 622 ayat (10) Kitab Undang-Undang Hukum Pidana</p>
+                        </div>
+
+                        <table class="styled-table">
+                            <thead>
+                                <tr>
+                                    <th>Ketentuan Asal (UU ITE)</th>
+                                    <th>Ketentuan Baru (KUHP)</th>
+                                    <th>Substansi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Pasal 27 ayat (1) jo. Pasal 45 ayat (1)</td>
+                                    <td>Pasal 407 KUHP</td>
+                                    <td>Pornografi dan Konten Asusila</td>
+                                </tr>
+                                <tr>
+                                    <td>Pasal 27 ayat (3) jo. Pasal 45 ayat (3)</td>
+                                    <td>Pasal 441 KUHP</td>
+                                    <td>Defamasi dengan Sarana Teknologi</td>
+                                </tr>
+                                <tr>
+                                    <td>Pasal 28 ayat (2) jo. Pasal 45A ayat (2)</td>
+                                    <td>Pasal 243 KUHP</td>
+                                    <td>Hasutan Berbasis SARA</td>
+                                </tr>
+                                <tr>
+                                    <td>Pasal 30 jo. Pasal 46</td>
+                                    <td>Pasal 332 KUHP</td>
+                                    <td>Akses Tidak Sah ke Sistem Komputer</td>
+                                </tr>
+                                <tr>
+                                    <td>Pasal 31 ayat (1), (2) jo. Pasal 47</td>
+                                    <td>Pasal 258 ayat (2) KUHP</td>
+                                    <td>Intersepsi Komunikasi Elektronik</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="info-box cyan">
+                            <h5>Ketentuan KUHP yang Mengalami Revisi dalam UU Penyesuaian Pidana 2026:</h5>
+                            <ul>
+                                <li>Pasal 407 ayat (1) &mdash; Tindak Pidana Pornografi</li>
+                                <li>Penjelasan Pasal 433 ayat (3) &mdash; Defamasi</li>
+                                <li>Pasal 243 &mdash; Provokasi Kebencian</li>
+                                <li>Pasal 332 &mdash; Peretasan Sistem</li>
+                                <li>Pasal 263 dan 264 &mdash; Penyebaran Hoaks</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PAGE 4: Kesusilaan -->
+                <div class="page" data-page="4">
+                    <div class="page-inner">
+                        <div class="page-header">
+                            <div class="tag cyan">Transformasi</div>
+                            <h2>Tindak Pidana Kesusilaan dalam Ranah Digital</h2>
+                            <p>Perbandingan ketentuan lama dan baru mengenai konten asusila</p>
+                        </div>
+
+                        <div class="comparison">
+                            <div class="comp-box old">
+                                <h4>&#9668; UU ITE Pasal 27(1)</h4>
+                                <div class="quote">
+                                    Individu yang secara sadar dan tanpa kewenangan <strong>mempublikasikan, menampilkan, mendistribusikan, mentransmisikan</strong>, ataupun menyediakan akses terhadap konten digital bermuatan asusila untuk diketahui khalayak umum dapat dikenai sanksi pidana.
+                                </div>
+                            </div>
+                            <div class="comp-arrow">&rarr;</div>
+                            <div class="comp-box new">
+                                <h4>KUHP Pasal 407(1) <span class="badge changed">REVISI 2026</span></h4>
+                                <div class="quote">
+                                    Individu yang melakukan produksi, pembuatan, penggandaan, penyebarluasan, <strong>penyiaran</strong>, impor, ekspor, penawaran, penjualan, penyewaan, atau penyediaan materi <strong>pornografi</strong> diancam hukuman kurungan maksimal <strong>10 tahun</strong> atau sanksi finansial hingga <strong>kategori VI</strong>.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PAGE 5: Perjudian -->
+                <div class="page" data-page="5">
+                    <div class="page-inner">
+                        <div class="page-header">
+                            <div class="tag red">Dicabut 2026</div>
+                            <h2>Tindak Pidana Perjudian Digital</h2>
+                            <p>Ketentuan yang dihapus oleh UU Penyesuaian Pidana No. 1/2026</p>
+                        </div>
+
+                        <div class="comparison">
+                            <div class="comp-box old">
+                                <h4>&#9668; UU ITE Pasal 45(3) jo. 27(2)</h4>
+                                <div class="quote">
+                                    Individu yang secara sadar dan tanpa kewenangan menyebarkan, mentransmisikan, atau menyediakan akses terhadap konten digital bermuatan <strong>perjudian</strong> sebagaimana diatur dalam Pasal 27 ayat (2) diancam hukuman kurungan maksimal <strong>10 tahun</strong> dan/atau sanksi finansial hingga <strong>Rp10 miliar</strong>.
+                                </div>
+                            </div>
+                            <div class="comp-arrow">&rarr;</div>
+                            <div class="comp-box new">
+                                <h4>Status Terkini <span class="badge changed">DICABUT 2026</span></h4>
+                                <div class="quote">
+                                    <strong>Pasal 45 ayat (3) UU ITE dinyatakan tidak berlaku.</strong><br><br>
+                                    Tindak pidana perjudian, baik daring maupun konvensional, kini diatur secara terpadu melalui <strong>Pasal 426</strong> dan <strong>Pasal 427</strong> KUHP.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="article-block">
+                            <h4>Pasal 426 KUHP &mdash; Penyelenggaraan Perjudian</h4>
+                            <div class="ayat">
+                                <span class="ayat-num">(1)</span> Ancaman hukuman kurungan maksimal <strong>9 tahun</strong> atau sanksi finansial kategori VI berlaku bagi individu yang tanpa izin resmi:
+                                <ul>
+                                    <li><strong>a.</strong> menyediakan fasilitas perjudian sebagai sumber penghasilan atau terlibat dalam operasional bisnis perjudian;</li>
+                                    <li><strong>b.</strong> membuka kesempatan berjudi kepada publik atau berpartisipasi dalam pengelolaan usaha perjudian; atau</li>
+                                    <li><strong>c.</strong> menjadikan keterlibatan dalam aktivitas perjudian sebagai profesi.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="article-block">
+                            <h4>Pasal 427 KUHP &mdash; Partisipasi dalam Perjudian Ilegal</h4>
+                            <div class="ayat">
+                                Individu yang memanfaatkan kesempatan berjudi pada kegiatan perjudian tanpa izin resmi diancam hukuman kurungan maksimal <strong>3 tahun</strong> atau sanksi finansial kategori III.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PAGE 6: Defamasi -->
+                <div class="page" data-page="6">
+                    <div class="page-inner">
+                        <div class="page-header">
+                            <div class="tag cyan">Transformasi</div>
+                            <h2>Tindak Pidana Defamasi Digital</h2>
+                            <p>Pencemaran nama baik melalui sarana teknologi informasi</p>
+                        </div>
+
+                        <div class="comparison">
+                            <div class="comp-box old">
+                                <h4>&#9668; UU ITE Pasal 27A</h4>
+                                <div class="quote">
+                                    Individu yang secara sadar <strong>menyerang kehormatan atau reputasi</strong> pihak lain melalui tuduhan tertentu, dengan intensi agar tuduhan tersebut menjadi konsumsi publik dalam format informasi atau dokumen elektronik via sistem digital.
+                                </div>
+                            </div>
+                            <div class="comp-arrow">&rarr;</div>
+                            <div class="comp-box new">
+                                <h4>KUHP Pasal 441</h4>
+                                <div class="quote">
+                                    (1) Sanksi pidana sebagaimana tercantum dalam Pasal 433 hingga 439 dapat <strong>ditingkatkan sepertiga</strong> <span class="highlight">apabila dilakukan menggunakan sarana teknologi informasi.</span><br><br>
+                                    (2) Sanksi dalam Pasal 433, 434, dan 436 dapat ditingkatkan sepertiga apabila korban adalah <strong>pejabat yang tengah melaksanakan tugas resmi</strong>.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-box">
+                            <h5>Informasi Penting</h5>
+                            <p>Regulasi lengkap mengenai tindak pidana terhadap kehormatan diatur dalam <strong>Pasal 433 &ndash; 439 KUHP</strong>.</p>
+                        </div>
+
+                        <div class="article-block">
+                            <h4>Pasal 433 KUHP &mdash; Pencemaran Nama Baik</h4>
+                            <div class="ayat">
+                                <span class="ayat-num">(1)</span> Individu yang <strong>secara lisan</strong> menyerang kehormatan atau reputasi pihak lain melalui tuduhan tertentu dengan maksud agar diketahui publik, dihukum karena pencemaran dengan kurungan maksimal <strong>9 bulan</strong> atau sanksi finansial kategori II.
+                            </div>
+                            <div class="ayat">
+                                <span class="ayat-num">(2)</span> Apabila tindakan pada ayat (1) dilakukan <strong>melalui tulisan atau gambar</strong> yang dipublikasikan, ditampilkan, atau ditempel di area publik, pelaku dihukum karena pencemaran tertulis dengan kurungan maksimal <strong>1 tahun 6 bulan</strong> atau sanksi finansial kategori III.
+                            </div>
+                            <div class="ayat">
+                                <span class="ayat-num">(3)</span> Tindakan sebagaimana dimaksud pada ayat (1) dan (2) <strong>tidak dapat dipidana</strong> jika dilakukan demi <strong>kepentingan umum</strong> atau dalam rangka <strong>pembelaan diri</strong>.
+                            </div>
+                        </div>
+
+                        <div class="article-block">
+                            <h4>Pasal 434 KUHP &mdash; Fitnah</h4>
+                            <div class="ayat">
+                                <span class="ayat-num">(1)</span> Apabila pelaku sebagaimana dimaksud Pasal 433 diberi kesempatan membuktikan kebenaran tuduhannya <strong>namun gagal membuktikan</strong>, dan tuduhan tersebut berlawanan dengan pengetahuannya, pelaku dihukum karena fitnah dengan kurungan maksimal <strong>3 tahun</strong> atau sanksi finansial kategori IV.
+                            </div>
+                            <div class="ayat">
+                                <span class="ayat-num">(2)</span> Pembuktian kebenaran tuduhan hanya dimungkinkan dalam kondisi:
+                                <ul>
+                                    <li><strong>a.</strong> hakim menilai perlu memeriksa kebenaran tuduhan untuk mempertimbangkan pembelaan terdakwa bahwa tindakannya demi kepentingan umum atau pembelaan diri; atau</li>
+                                    <li><strong>b.</strong> pejabat dituduh melakukan sesuatu dalam kapasitas jabatannya.</li>
+                                </ul>
+                            </div>
+                            <div class="ayat">
+                                <span class="ayat-num">(3)</span> Pembuktian tidak dapat dilakukan jika tuduhan tersebut merupakan delik aduan, namun pengaduan tidak diajukan.
+                            </div>
+                        </div>
+
+                        <div class="article-block">
+                            <h4>Pasal 435 KUHP &mdash; Ketentuan Fitnah Lanjutan</h4>
+                            <div class="ayat">
+                                <span class="ayat-num">(1)</span> Apabila putusan pengadilan berkekuatan hukum tetap menyatakan korban <strong>bersalah</strong> atas tuduhan dalam Pasal 434, <strong>tidak dapat dijatuhkan pidana fitnah</strong>.
+                            </div>
+                            <div class="ayat">
+                                <span class="ayat-num">(2)</span> Apabila putusan pengadilan berkekuatan hukum tetap <strong>membebaskan</strong> korban dari tuduhan, putusan tersebut menjadi <strong>bukti sempurna</strong> bahwa tuduhan tidak benar.
+                            </div>
+                            <div class="ayat">
+                                <span class="ayat-num">(3)</span> Apabila penuntutan pidana terhadap korban telah dimulai berkaitan dengan tuduhan yang sama, penuntutan fitnah <strong>ditangguhkan</strong> hingga ada putusan berkekuatan hukum tetap.
+                            </div>
+                        </div>
+
+                        <div class="article-block">
+                            <h4>Pasal 436 KUHP &mdash; Penghinaan Ringan</h4>
+                            <div class="ayat">
+                                Penghinaan yang <strong>bukan merupakan pencemaran atau pencemaran tertulis</strong> yang dilakukan terhadap pihak lain, baik di muka umum secara lisan atau tertulis, maupun langsung kepada korban melalui lisan, perbuatan, atau tulisan yang dikirimkan kepadanya, dihukum karena penghinaan ringan dengan kurungan maksimal <strong>6 bulan</strong> atau sanksi finansial kategori II.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PAGE 7: Ujaran Kebencian -->
+                <div class="page" data-page="7">
+                    <div class="page-inner">
+                        <div class="page-header">
+                            <div class="tag purple">Provokasi SARA</div>
+                            <h2>Tindak Pidana Provokasi Berbasis Identitas</h2>
+                            <p>Hasutan kebencian antar golongan melalui sarana digital</p>
+                        </div>
+
+                        <div class="comparison">
+                            <div class="comp-box old">
+                                <h4>&#9668; UU ITE Pasal 28(2)</h4>
+                                <div class="quote">
+                                    Individu yang secara sadar dan tanpa kewenangan menyebarkan atau mentransmisikan konten digital yang bersifat <strong>provokatif, mengajak, atau memengaruhi</strong> sehingga menimbulkan <strong>kebencian atau permusuhan</strong> terhadap individu atau kelompok berdasarkan <strong>ras, kebangsaan, etnis, warna kulit, agama, kepercayaan, gender, disabilitas mental, atau disabilitas fisik</strong>.
+                                </div>
+                            </div>
+                            <div class="comp-arrow">&rarr;</div>
+                            <div class="comp-box new">
+                                <h4>KUHP Pasal 243 <span class="badge changed">REVISI 2026</span></h4>
+                                <div class="quote">
+                                    Individu yang mempublikasikan, menampilkan, atau menempelkan tulisan/gambar agar terlihat publik, atau memperdengarkan rekaman agar terdengar publik, atau <span class="highlight">menyebarluaskan via sarana teknologi informasi</span>, yang memuat pernyataan <strong>permusuhan</strong> dengan maksud agar diketahui publik, terhadap golongan penduduk Indonesia berdasarkan <strong>ras, kebangsaan, etnis, warna kulit, gender, atau disabilitas</strong> yang <strong>mengakibatkan kekerasan</strong> terhadap orang atau barang, diancam kurungan maksimal <strong>4 tahun</strong> atau sanksi finansial kategori IV.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PAGE 8: Berita Bohong -->
+                <div class="page" data-page="8">
+                    <div class="page-inner">
+                        <div class="page-header">
+                            <div class="tag yellow">Hoaks</div>
+                            <h2>Tindak Pidana Penyebaran Hoaks Pemicu Kekacauan</h2>
+                            <p>Penyebaran informasi palsu yang mengakibatkan gangguan ketertiban</p>
+                        </div>
+
+                        <div class="comparison">
+                            <div class="comp-box old">
+                                <h4>&#9668; UU ITE Pasal 28(3)</h4>
+                                <div class="quote">
+                                    Individu yang secara sadar menyebarkan konten digital yang diketahuinya memuat <strong>informasi palsu yang menimbulkan kekacauan</strong> di tengah masyarakat.
+                                </div>
+                            </div>
+                            <div class="comp-arrow">&rarr;</div>
+                            <div class="comp-box new">
+                                <h4>KUHP Pasal 263 <span class="badge changed">REVISI 2026</span></h4>
+                                <div class="quote">
+                                    Individu yang mempublikasikan atau menyebarluaskan berita atau pemberitahuan padahal <span class="highlight">mengetahui bahwa informasi tersebut bohong</span> yang <strong>mengakibatkan kekacauan</strong> di masyarakat, diancam kurungan maksimal <strong>6 tahun</strong> atau sanksi finansial kategori V.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="article-block">
+                            <h4>Pasal 264 KUHP &mdash; Penyebaran Berita Tidak Akurat <span class="badge changed">REVISI 2026</span></h4>
+                            <div class="ayat">
+                                Individu yang menyiarkan berita yang <strong>tidak pasti, dibesar-besarkan, atau tidak lengkap</strong> padahal mengetahui bahwa berita demikian mengakibatkan kekacauan di masyarakat, diancam kurungan maksimal <strong>2 tahun</strong> atau sanksi finansial kategori III.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PAGE 9: Illegal Access -->
+                <div class="page" data-page="9">
+                    <div class="page-inner">
+                        <div class="page-header">
+                            <div class="tag cyan">Akses Ilegal</div>
+                            <h2>Tindak Pidana Akses Tidak Sah ke Sistem Komputer</h2>
+                            <p>Peretasan dan akses tanpa otorisasi ke sistem elektronik</p>
+                        </div>
+
+                        <div class="comparison">
+                            <div class="comp-box old">
+                                <h4>&#9668; UU ITE Pasal 30</h4>
+                                <div class="quote">
+                                    <strong>(1)</strong> Individu yang secara sadar dan melawan hukum <strong>mengakses komputer atau sistem elektronik</strong> milik pihak lain dengan cara apapun.<br><br>
+                                    <strong>(2)</strong> Individu yang secara sadar dan melawan hukum mengakses komputer atau sistem elektronik dengan cara apapun <strong>untuk memperoleh data elektronik</strong>.<br><br>
+                                    <strong>(3)</strong> Individu yang secara sadar dan melawan hukum mengakses komputer atau sistem elektronik dengan cara apapun dengan <strong>menerobos, melampaui, atau menjebol sistem keamanan</strong>.
+                                </div>
+                            </div>
+                            <div class="comp-arrow">&rarr;</div>
+                            <div class="comp-box new">
+                                <h4>KUHP Pasal 332 <span class="badge changed">REVISI 2026</span></h4>
+                                <div class="quote">
+                                    <strong>(1)</strong> Individu yang melawan hukum <span class="highlight">mengakses komputer atau sistem elektronik milik pihak lain</span>, diancam kurungan maksimal <strong>6 tahun</strong> atau sanksi finansial kategori V.<br><br>
+                                    <strong>(2)</strong> Individu yang melawan hukum mengakses komputer atau sistem elektronik <span class="highlight">untuk memperoleh data elektronik</span>, diancam kurungan maksimal <strong>7 tahun</strong> atau sanksi finansial kategori V.<br><br>
+                                    <strong>(3)</strong> Individu yang melawan hukum mengakses komputer atau sistem elektronik <span class="highlight">dengan menerobos sistem keamanan</span>, diancam kurungan maksimal <strong>8 tahun</strong> atau sanksi finansial kategori VI.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PAGE 10: Penyadapan -->
+                <div class="page" data-page="10">
+                    <div class="page-inner">
+                        <div class="page-header">
+                            <div class="tag purple">Intersepsi</div>
+                            <h2>Tindak Pidana Intersepsi Komunikasi Elektronik</h2>
+                            <p>Penyadapan dan pencegatan transmisi data elektronik</p>
+                        </div>
+
+                        <div class="comparison">
+                            <div class="comp-box old">
+                                <h4>&#9668; UU ITE Pasal 31</h4>
+                                <div class="quote">
+                                    <strong>(1)</strong> Individu yang secara sadar dan melawan hukum melakukan <strong>penyadapan</strong> atas data elektronik dalam komputer atau sistem elektronik milik pihak lain.<br><br>
+                                    <strong>(2)</strong> Individu yang secara sadar dan melawan hukum melakukan <strong>intersepsi atas transmisi</strong> data elektronik non-publik dari, ke, dan dalam komputer atau sistem elektronik milik pihak lain, baik yang menimbulkan perubahan maupun tidak, termasuk penghilangan atau penghentian data yang sedang ditransmisikan.
+                                </div>
+                            </div>
+                            <div class="comp-arrow">&rarr;</div>
+                            <div class="comp-box new">
+                                <h4>KUHP Pasal 258(2)</h4>
+                                <div class="quote">
+                                    <strong>(1)</strong> Individu yang melawan hukum <span class="highlight">mendengarkan, merekam, membelokkan, mengubah, menghambat, atau mencatat</span> transmisi data elektronik non-publik, baik via jaringan kabel maupun nirkabel, diancam kurungan maksimal <strong>10 tahun</strong> atau sanksi finansial kategori VI.<br><br>
+                                    <strong>(2)</strong> Individu yang <strong>mempublikasikan atau menyebarluaskan hasil penyadapan</strong> sebagaimana dimaksud ayat (1), diancam kurungan maksimal <strong>10 tahun</strong> atau sanksi finansial kategori VI.<br><br>
+                                    <strong>(3)</strong> Ketentuan ayat (1) <strong>tidak berlaku</strong> bagi individu yang melaksanakan ketentuan perundang-undangan atau perintah jabatan resmi.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PAGE 11: Peralihan -->
+                <div class="page" data-page="11">
+                    <div class="page-inner">
+                        <div class="page-header">
+                            <div class="tag orange">Transisi</div>
+                            <h2>Mekanisme Transisi Hukum dalam Masa Peralihan</h2>
+                            <p>Prinsip-prinsip peralihan hukum yang berlaku selama masa transisi</p>
+                        </div>
+
+                        <div class="transition-block">
+                            <h4>Pasal 3 KUHP &mdash; Prinsip Hukum yang Menguntungkan</h4>
+                            <div class="pasal">
+                                <span class="ayat-num">(1)</span> Dalam kondisi terdapat <strong>perubahan regulasi setelah tindak pidana terjadi</strong>, diberlakukan regulasi yang baru, <strong>kecuali</strong> apabila regulasi lama <strong>lebih menguntungkan bagi pelaku atau pembantu</strong> tindak pidana.
+                            </div>
+                        </div>
+
+                        <div class="transition-block">
+                            <h4>Pasal 618 KUHP &mdash; Penanganan Perkara dalam Proses</h4>
+                            <div class="pasal">
+                                Pada saat KUHP ini berlaku, tindak pidana yang <strong>sedang dalam proses peradilan</strong> menggunakan ketentuan KUHP ini, <strong>kecuali</strong> apabila undang-undang sebelumnya <strong>lebih menguntungkan bagi tersangka atau terdakwa</strong>.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PAGE 12: Ketentuan Tambahan -->
+                <div class="page" data-page="12">
+                    <div class="page-inner">
+                        <div class="page-header">
+                            <div class="tag purple">Tambahan</div>
+                            <h2>Ketentuan Siber Tambahan dalam KUHP</h2>
+                            <p>Pasal-pasal lain dalam KUHP yang mencakup dimensi teknologi informasi</p>
+                        </div>
+
+                        <div class="article-block">
+                            <h4>Pasal 219 KUHP &mdash; Penyerangan Kehormatan Presiden/Wakil Presiden</h4>
+                            <div class="ayat">
+                                Individu yang mempublikasikan, menampilkan, atau menempelkan tulisan/gambar agar terlihat publik, memperdengarkan rekaman agar terdengar publik, atau <span class="highlight">menyebarluaskan via sarana teknologi informasi</span> yang memuat <strong>serangan terhadap kehormatan atau martabat</strong> Presiden dan/atau Wakil Presiden dengan maksud agar diketahui publik, diancam kurungan maksimal <strong>4 tahun</strong> atau sanksi finansial kategori IV.
+                            </div>
+                            <div class="info-box yellow">
+                                <h5>Ketentuan Khusus</h5>
+                                <ul>
+                                    <li>Berdasarkan Pasal 220 KUHP, ketentuan ini merupakan <strong>delik aduan tertulis</strong> dari Presiden/Wakil Presiden</li>
+                                    <li>Pengecualian berlaku apabila dilakukan demi <strong>kepentingan umum atau pembelaan diri</strong></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="article-block">
+                            <h4>Pasal 228(1) KUHP &mdash; Penyerangan Kehormatan Kepala Negara Asing</h4>
+                            <div class="ayat">
+                                Individu yang mempublikasikan, menampilkan, atau menempelkan tulisan/gambar agar terlihat publik, memperdengarkan rekaman agar terdengar publik, atau <span class="highlight">menyebarluaskan via sarana teknologi informasi</span> yang memuat <strong>serangan terhadap kehormatan atau martabat</strong> kepala negara sahabat atau perwakilannya di Indonesia, diancam kurungan maksimal <strong>3 tahun</strong> atau sanksi finansial kategori IV.
+                            </div>
+                            <div class="info-box yellow">
+                                <h5>Ketentuan Khusus</h5>
+                                <ul>
+                                    <li>Berdasarkan Pasal 229 KUHP, ketentuan ini merupakan <strong>delik aduan</strong> dari kepala negara sahabat atau perwakilannya</li>
+                                    <li>Pengecualian berlaku apabila dilakukan demi <strong>kepentingan umum atau pembelaan diri</strong></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="article-block">
+                            <h4>Pasal 241 KUHP &mdash; Penyerangan Kehormatan Pemerintah/Lembaga Negara</h4>
+                            <div class="ayat">
+                                <span class="ayat-num">(1)</span> Individu yang mempublikasikan, menampilkan, atau menempelkan tulisan/gambar agar terlihat publik, memperdengarkan rekaman agar terdengar publik, atau <span class="highlight">menyebarluaskan via sarana teknologi informasi</span> yang memuat <strong>penghinaan terhadap pemerintah atau lembaga negara</strong> dengan maksud agar diketahui publik, diancam kurungan maksimal <strong>3 tahun</strong> atau sanksi finansial kategori IV.
+                            </div>
+                            <div class="ayat">
+                                <span class="ayat-num">(2)</span> Apabila tindak pidana tersebut <strong>mengakibatkan kekacauan</strong> di masyarakat, ancaman hukuman meningkat menjadi kurungan maksimal <strong>4 tahun</strong> atau sanksi finansial kategori IV.
+                            </div>
+                            <div class="info-box yellow">
+                                <h5>Ketentuan Khusus</h5>
+                                <p>Berdasarkan Pasal 241 ayat (3) KUHP, ketentuan ayat (1) merupakan <strong>delik aduan</strong> dari pihak yang merasa terhina.</p>
+                            </div>
+                        </div>
+
+                        <div class="article-block">
+                            <h4>Pasal 247 KUHP &mdash; Hasutan Melawan Penguasa dengan Kekerasan</h4>
+                            <div class="ayat">
+                                Individu yang mempublikasikan, menampilkan, atau menempelkan tulisan/gambar agar terlihat publik, memperdengarkan rekaman agar terdengar publik, atau <span class="highlight">menyebarluaskan via sarana teknologi informasi</span> yang memuat <strong>hasutan untuk melakukan tindak pidana atau melawan penguasa dengan kekerasan</strong> dengan maksud agar diketahui publik, diancam kurungan maksimal <strong>4 tahun 6 bulan</strong> atau sanksi finansial kategori V.
+                            </div>
+                            <div class="info-box cyan">
+                                <h5>Catatan Penjelasan</h5>
+                                <p>Terminologi "menyiarkan" mencakup aktivitas <strong>mendistribusikan</strong> dan <strong>menyediakan akses</strong> terhadap data elektronik dalam sistem elektronik.</p>
+                            </div>
+                        </div>
+
+                        <div class="article-block">
+                            <h4>Pasal 250(1) KUHP &mdash; Penawaran Fasilitas Tindak Pidana</h4>
+                            <div class="ayat">
+                                Individu yang mempublikasikan, menampilkan, atau menempelkan tulisan/gambar agar terlihat publik, memperdengarkan rekaman agar terdengar publik, atau <span class="highlight">menyebarluaskan via sarana teknologi informasi</span> yang memuat <strong>penawaran informasi, kesempatan, atau sarana untuk melakukan tindak pidana</strong> dengan maksud agar diketahui publik, diancam kurungan maksimal <strong>9 bulan</strong> atau sanksi finansial kategori II.
+                            </div>
+                            <div class="info-box yellow">
+                                <h5>Ketentuan Tambahan</h5>
+                                <p>Apabila pelaku melakukan tindakan tersebut dalam kapasitas profesional dan belum lewat 2 tahun sejak putusan pemidanaan berkekuatan hukum tetap untuk tindak pidana serupa, dapat dijatuhi <strong>pidana tambahan berupa pencabutan hak</strong> sesuai Pasal 86 huruf f.</p>
+                            </div>
+                        </div>
+
+                        <div class="article-block">
+                            <h4>Pasal 259 KUHP &mdash; Perekaman Ilegal yang Merugikan</h4>
+                            <div class="ayat">
+                                Ancaman hukuman kurungan maksimal <strong>7 tahun</strong> atau sanksi finansial kategori VI berlaku bagi individu yang:
+                                <ul>
+                                    <li><strong>a.</strong> memanfaatkan kesempatan yang diperoleh secara curang atau melawan hukum untuk <strong>merekam gambar</strong> seseorang di dalam rumah atau ruangan privat menggunakan alat bantu teknis sehingga <strong>merugikan kepentingan hukum</strong> korban;</li>
+                                    <li><strong>b.</strong> memiliki gambar yang diketahui atau patut diduga diperoleh melalui cara sebagaimana huruf a; atau</li>
+                                    <li><strong>c.</strong> <span class="highlight">mempublikasikan atau menyebarluaskan gambar</span> tersebut <strong>menggunakan sarana teknologi informasi</strong>.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="article-block">
+                            <h4>Pasal 300 &amp; 301 KUHP &mdash; Provokasi Berbasis Agama <span class="badge changed">REVISI 2026</span></h4>
+                            <div class="ayat">
+                                <strong>Pasal 300:</strong><br>
+                                Individu yang di muka umum:
+                                <ul>
+                                    <li><strong>a.</strong> melakukan perbuatan bersifat permusuhan;</li>
+                                    <li><strong>b.</strong> menyatakan kebencian atau permusuhan; atau</li>
+                                    <li><strong>c.</strong> menghasut untuk melakukan kekerasan atau diskriminasi</li>
+                                </ul>
+                                terhadap individu, golongan, atau kelompok berdasarkan <strong>agama atau kepercayaan</strong> di Indonesia, diancam kurungan maksimal <strong>3 tahun</strong> atau sanksi finansial kategori IV.
+                            </div>
+                            <div class="ayat" style="margin-top: 14px;">
+                                <strong>Pasal 301 ayat (1):</strong><br>
+                                Individu yang mempublikasikan, menampilkan, menempelkan tulisan/gambar, memperdengarkan rekaman, termasuk <span class="highlight">menyebarluaskan via sarana teknologi informasi</span> yang memuat tindak pidana sebagaimana Pasal 300 dengan maksud agar diketahui publik, diancam kurungan maksimal <strong>5 tahun</strong> atau sanksi finansial kategori V.
+                            </div>
+                        </div>
+
+                        <div class="article-block">
+                            <h4>Pasal 506 KUHP &mdash; Hoaks Manipulasi Pasar</h4>
+                            <div class="ayat">
+                                Individu yang dengan maksud menguntungkan diri sendiri atau pihak lain secara melawan hukum, <strong>menyiarkan informasi palsu</strong> yang mengakibatkan <strong>fluktuasi harga</strong> barang dagangan, dana, transaksi keuangan, atau surat berharga, diancam kurungan maksimal <strong>3 tahun</strong> atau sanksi finansial kategori IV.
+                            </div>
+                            <div class="info-box cyan">
+                                <h5>Catatan Penjelasan</h5>
+                                <p>Terminologi "kabar bohong" tidak hanya mencakup pemberitahuan palsu tentang fakta, tetapi juga pemberitahuan palsu tentang <strong>keuntungan yang dapat diharapkan</strong>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /content-area -->
+
+            <!-- Bottom Nav -->
+            <div class="bottom-nav">
+                <button class="btn-nav" id="btnPrev" onclick="prevPage()" disabled>
+                    &larr; Sebelumnya
+                </button>
+                <div class="dot-indicators" id="dots"></div>
+                <button class="btn-nav" id="btnNext" onclick="nextPage()">
+                    Selanjutnya &rarr;
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const pages = document.querySelectorAll('.page');
+        const totalPages = pages.length;
+        let currentPage = 0;
+
+        const navItems = [
+            { num: '00', label: 'Beranda' },
+            { num: '01', label: 'Ketentuan yang Dicabut' },
+            { num: '02', label: 'Ketentuan yang Berlaku' },
+            { num: '03', label: 'Pemetaan Transformasi' },
+            { num: '04', label: 'Kesusilaan Digital' },
+            { num: '05', label: 'Perjudian Digital' },
+            { num: '06', label: 'Defamasi Digital' },
+            { num: '07', label: 'Provokasi SARA' },
+            { num: '08', label: 'Hoaks & Berita Bohong' },
+            { num: '09', label: 'Akses Ilegal' },
+            { num: '10', label: 'Intersepsi Komunikasi' },
+            { num: '11', label: 'Mekanisme Transisi' },
+            { num: '12', label: 'Ketentuan Tambahan' },
+        ];
+
+        // Build sidebar nav
+        const sidebarNav = document.getElementById('sidebarNav');
+        navItems.forEach((item, i) => {
+            const el = document.createElement('button');
+            el.type = 'button';
+            el.className = 'nav-item' + (i === 0 ? ' active' : '');
+            el.innerHTML = `<span class="nav-num">${item.num}</span><span class="nav-label">${item.label}</span>`;
+            el.addEventListener('click', () => goToPage(i));
+            sidebarNav.appendChild(el);
+        });
+
+        // Build dots
+        const dotsContainer = document.getElementById('dots');
+        for (let i = 0; i < totalPages; i++) {
+            const dot = document.createElement('button');
+            dot.type = 'button';
+            dot.className = 'dot' + (i === 0 ? ' active' : '');
+            dot.addEventListener('click', () => goToPage(i));
+            dotsContainer.appendChild(dot);
+        }
+
+        function goToPage(index) {
+            if (index < 0 || index >= totalPages || index === currentPage) return;
+
+            const goingForward = index > currentPage;
+            const oldIndex = currentPage;
+
+            // Deactivate current page
+            pages[oldIndex].classList.remove('active');
+
+            // Clean up after exit transition
+            setTimeout(() => {
+                pages[oldIndex].classList.remove('exit-left');
+            }, 400);
+
+            // Prepare new page
+            const newPage = pages[index];
+            newPage.classList.remove('exit-left');
+
+            if (!goingForward) {
+                // Backward: start from left
+                newPage.style.transition = 'none';
+                newPage.style.transform = 'translateX(-30px)';
+                newPage.style.opacity = '0';
+                void newPage.offsetHeight;
+                newPage.style.transition = '';
+            }
+
+            // Clear inline overrides and activate
+            newPage.style.transform = '';
+            newPage.style.opacity = '';
+            newPage.classList.add('active');
+            newPage.scrollTop = 0;
+
+            currentPage = index;
+            updateUI();
+
+            // Close sidebar on mobile
+            if (window.innerWidth <= 900) {
+                closeSidebar();
+            }
+        }
+
+        function nextPage() { goToPage(currentPage + 1); }
+        function prevPage() { goToPage(currentPage - 1); }
+
+        function updateUI() {
+            // Nav items
+            document.querySelectorAll('.nav-item').forEach((el, i) => {
+                el.classList.toggle('active', i === currentPage);
+            });
+
+            // Dots
+            document.querySelectorAll('.dot').forEach((el, i) => {
+                el.classList.toggle('active', i === currentPage);
+            });
+
+            // Buttons
+            document.getElementById('btnPrev').disabled = currentPage === 0;
+            document.getElementById('btnNext').disabled = currentPage === totalPages - 1;
+
+            // Page number
+            document.getElementById('pageNum').textContent = String(currentPage).padStart(2, '0');
+            document.getElementById('totalPages').textContent = String(totalPages - 1).padStart(2, '0');
+
+            // Page select dropdown
+            document.getElementById('pageSelect').value = currentPage;
+        }
+
+        // Sidebar toggle for mobile
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('open');
+            document.getElementById('overlay').classList.toggle('show');
+        }
+
+        function closeSidebar() {
+            document.getElementById('sidebar').classList.remove('open');
+            document.getElementById('overlay').classList.remove('show');
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                e.preventDefault();
+                nextPage();
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                e.preventDefault();
+                prevPage();
+            }
+        });
+    </script>
+</body>
+</html>
